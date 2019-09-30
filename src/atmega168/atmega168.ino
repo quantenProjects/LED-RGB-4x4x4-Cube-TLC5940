@@ -5,12 +5,18 @@
   //   Atmega168
 */
 
+// Aenderungen an der Libary:
+// src/tlc_config.h:
+// TLC_PWM_PERIOD auf 4096 aendern
+// TLC_GSCLK_PERIOD auf 1 aendern
+
 //pins
 const byte layerpins[4] = {
   //4, 2, 6, 5 // das ist eigl die richtige Reihenfolge, aber richtiges debuggen ist aufwendiger als ein workaround :innocent:
   5,4,2,6
 };
 
+// Einkommentieren um Serielle Ausgabe zu aktivieren:
 //#define SerialDebug yess
 
 
