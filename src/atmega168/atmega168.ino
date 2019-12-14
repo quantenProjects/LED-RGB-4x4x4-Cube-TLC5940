@@ -17,6 +17,8 @@ const byte layerpins[4] = {
   5,4,2,6
 };
 
+const byte byte_index_mapping[6] = {3,2,1,0,5,4};
+
 // Einkommentieren um Serielle Ausgabe zu aktivieren:
 //#define SerialDebug yess
 
@@ -58,13 +60,13 @@ void loop() {
     for (int byte_index = 0; byte_index < 6; byte_index++) {
       for (int bit_index = 0; bit_index < 8; bit_index++) {
         if ((frame[layer][byte_index] >> bit_index) & 1) {
-          Tlc.set((byte_index ^ 1) * 8 + bit_index,4095);
+          Tlc.set(byte_index_mapping[byte_index] * 8 + bit_index,4095);
         } else {
-          Tlc.set((byte_index ^ 1) * 8 + bit_index,0);
+          Tlc.set(byte_index_mapping[byte_index] * 8 + bit_index,0);
         }
         #ifdef SerialDebug
         Serial.print("set led: ");
-        Serial.print((byte_index ^ 1) * 8 + bit_index);
+        Serial.print(byte_index_mapping[byte_index] * 8 + bit_index);
         Serial.print(" to ");
         Serial.println((frame[layer][byte_index] >> bit_index) & 1);
         #endif
