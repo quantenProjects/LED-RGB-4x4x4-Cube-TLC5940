@@ -9,6 +9,7 @@
 // src/tlc_config.h:
 // TLC_PWM_PERIOD auf 4096 aendern
 // TLC_GSCLK_PERIOD auf 1 aendern
+// Und Anzahl der TLC anpassen!
 
 //pins
 const byte layerpins[4] = {
@@ -57,14 +58,13 @@ void loop() {
     for (int byte_index = 0; byte_index < 6; byte_index++) {
       for (int bit_index = 0; bit_index < 8; bit_index++) {
         if ((frame[layer][byte_index] >> bit_index) & 1) {
-          Tlc.set(byte_index*8 + bit_index,4095);
+          Tlc.set((byte_index ^ 1) * 8 + bit_index,4095);
         } else {
-          Tlc.set(byte_index*8 + bit_index,0);
+          Tlc.set((byte_index ^ 1) * 8 + bit_index,0);
         }
-        //Tlc.set(byte_index*8 + bit_index, ((uint16_t)((frame[layer][byte_index] >> bit_index) & 1) )<< 11);
         #ifdef SerialDebug
         Serial.print("set led: ");
-        Serial.print(byte_index*8 + bit_index);
+        Serial.print((byte_index ^ 1) * 8 + bit_index);
         Serial.print(" to ");
         Serial.println((frame[layer][byte_index] >> bit_index) & 1);
         #endif
