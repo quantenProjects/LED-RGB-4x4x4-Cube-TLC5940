@@ -34,21 +34,21 @@ void setup() {
 
   blinken(150, 3);
 
-  myFile_1 = SD.open("1.c4b", FILE_WRITE); //file with the ani data. cab = cube 4x4x4 binary ;) because of the 8.3 file names not longer file extension are allowed
+  myFile_1 = SD.open("1.c4b", FILE_READ); //file with the ani data. cab = cube 4x4x4 binary ;) because of the 8.3 file names not longer file extension are allowed
   if ((myFile_1.size() % 24) != 0) {
     while (true) {
       ; //because than the file bad and have not the rigth length
     }
   }
 
-  myFile_2 = SD.open("2.c4b", FILE_WRITE); //file with the ani data. cab = cube 4x4x4 binary ;) because of the 8.3 file names not longer file extension are allowed
+  myFile_2 = SD.open("2.c4b", FILE_READ); //file with the ani data. cab = cube 4x4x4 binary ;) because of the 8.3 file names not longer file extension are allowed
   if ((myFile_2.size() % 24) != 0) {
     while (true) {
       ; //because than the file bad and have not the rigth length
     }
   }
 
-  myFile_3 = SD.open("3.c4b", FILE_WRITE); //file with the ani data. cab = cube 4x4x4 binary ;) because of the 8.3 file names not longer file extension are allowed
+  myFile_3 = SD.open("3.c4b", FILE_READ); //file with the ani data. cab = cube 4x4x4 binary ;) because of the 8.3 file names not longer file extension are allowed
   if ((myFile_3.size() % 24) != 0) {
     while (true) {
       ; //because than the file bad and have not the rigth length
